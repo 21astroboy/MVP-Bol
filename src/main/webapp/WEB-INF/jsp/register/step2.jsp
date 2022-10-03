@@ -15,42 +15,67 @@
 <html>
 <head>
     <link href="<c:url value="/resources/css/layout.css" />" rel="stylesheet">
-    <title>Регистрация</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://www.sng-it.ru/bitrix/templates/master/js/jquery.inputmask.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".reg-region").on("change", function () {
+                let id = $(this).find(":selected").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/region/" + id + "/locs",
+                    success: function (data) {
+                        let loc_select = $(".reg-locality");
+                        loc_select.empty();
+                        loc_select.append('<option value="" disabled selected>Населенный пункт</option>');
+                        for (let i = 0; i < data.length; i++) {
+                            loc_select.append("<option value=" + data[i].id + ">" + data[i].name + "</option>");
+                        }
+                        loc_select.change();
+                    }
+                });
+            });
+        });
+
+    </script>
+    <title>Bolsta</title>
 </head>
 <body>
-<h2>Регистрация</h2>
-<form:form method="POST" modelAttribute="newUser" action="/register">
-    <div>
-        <p>${user.firstName} ${user.lastName}, еще немного информации</p>
-        <ul>
-            <li>
-                <input id="football" type="radio" name="sport" value="1">
-                <label for="football">Футбол</label>
-            </li>
-            <li>
-                <input id="hockey" type="radio" name="sport" value="2">
-                <label for="hockey">Футбол</label>
-            </li>
-            <li>
-                <input id="basketball" type="radio" name="sport" value="3">
-                <label for="basketball">Футбол</label>
-            </li>
-        </ul>
-        <p>Регион:</p>
-        <select name="region" class="query-input">
-            <option value="Moscow" name="moscow">Москва и МО</option>
-            <option value="Samara" name="samara">Самарская область</option>
-        </select>
-        <p>Населенный пункт:</p>
-        <select name="locality" class="query-input">
-            <option value="moscow" name="moscow">Москва</option>
-            <option value="kolomna" name="kolomna">Коломна</option>
-            <option value="podolsk" name="podolsk">Подольск</option>
-            <option value="khimki" name="khimki">Химки</option>
-        </select>
-        <input name="step" type="hidden" value="2"/>
-        <input type="submit" value="Продолжить"/>
+<div class="main-page">
+    <div class="reg-page-container">
+        <form:form method="POST" modelAttribute="newUser" action="/register">
+            <div>
+                <div class="logo-cont">
+                    <a href="/">
+                        <img class="reg-logo" src="<c:url value="/resources/images/bolsta.png" />"
+                             alt="Bolsta - спортивная социальная сеть">
+                    </a>
+                </div>
+                <select class="log-reg-input reg-input reg-select reg-region">
+                    <option value="" disabled selected>Регион</option>
+                    <c:forEach items="${regions}" var="region">
+                    <option value="${region.id}">${region.name}</option>
+                    </c:forEach>
+                </select>
+
+                <select class="log-reg-input reg-input reg-select reg-locality">
+                    <option value="" disabled selected>Населенный пункт</option>
+                    <c:forEach items="${localities}" var="locality">
+                        <option value="${locality.id}">${locality.name}</option>
+                    </c:forEach>
+                </select>
+                <div class="log-reg-buttons reg-buttons">
+                    <input name="step" type="hidden" value="2"/>
+                    <button type="button" class="log-reg-button reg-button reg-back"> <</button>
+                    <button type="submit" class="log-reg-button reg-button reg-next">Продолжить</button>
+                </div>
+            </div>
+        </form:form>
+
     </div>
-</form:form>
+</div>
 </body>
 </html>
+

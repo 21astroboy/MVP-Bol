@@ -15,31 +15,28 @@
 <head>
     <link href="<c:url value="/resources/css/layout.css" />" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-
     <title>Bolsta</title>
 </head>
 <body>
 <div class="main-page">
-<div class="main-page-container">
-    <div class="main-page-banner">
-        <h1>Bolsta</h1>
-        <h2>спортивная социальная сеть</h2>
-    </div>
-    <div class="main-page-login-form-container">
+    <div class="main-page-container">
+        <div class="main-page-banner">
+            <img src="<c:url value="/resources/images/bolsta.png" />" alt="Bolsta - спортивная социальная сеть">
+        </div>
+
         <form action="/login">
-            <div>
-            <label for="login">Логин:</label>
-            <input type="text" name="login">
+            <div class="main-page-login-form-container">
+                <input type="text" placeholder="Почта или телефон" name="login" id="login"
+                       class="log-reg-input main-page-input login">
+                <input type="password" placeholder="Пароль" name="password" id="password" class="log-reg-input main-page-input">
+                <a href="/forgot" class="forgot-pass">Забыли пароль?</a>
+                <div class="log-reg-buttons">
+                    <a href="/register" class="register">Регистрация</a>
+                    <button type="submit" name="login_submit" class="log-reg-button log-button">Войти</button>
+                </div>
             </div>
-            <div>
-            <label for="password">Пароль:</label>
-            <input type="password" name="password">
-            </div>
-            <input type="submit" name="login_submit">
         </form>
     </div>
-    <div class="footer"></div>
-</div>
 </div>
 </body>
 </html>

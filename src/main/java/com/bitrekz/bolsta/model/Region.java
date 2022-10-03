@@ -1,6 +1,8 @@
 package com.bitrekz.bolsta.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,7 +16,9 @@ public class Region {
 
     private String name;
 
-    @OneToMany(mappedBy = "region")
+    private String code;
+
+    @OneToMany(mappedBy = "region", fetch = FetchType.LAZY)
     private Set<Locality> localities;
 
     public Region() {
@@ -36,6 +40,7 @@ public class Region {
         this.name = name;
     }
 
+    @JsonIgnoreProperties("region")
     public Set<Locality> getLocalities() {
         return localities;
     }
@@ -44,4 +49,11 @@ public class Region {
         this.localities = localities;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 }

@@ -15,25 +15,47 @@
 <html>
 <head>
     <link href="<c:url value="/resources/css/layout.css" />" rel="stylesheet">
-    <title>Регистрация</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://www.sng-it.ru/bitrix/templates/master/js/jquery.inputmask.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#phone").inputmask("+7 (999) 999-99-99");
+        });
+    </script>
+    <title>Bolsta</title>
 </head>
 <body>
-<h2>Регистрация</h2>
-<form:form method="POST" modelAttribute="newUser" action="/register">
-    <div>
-        <p>Имя:</p>
-        <form:input path="firstName"/>
-        <p>Фамилия:</p>
-        <form:input path="lastName"/>
-        <p>Отчество:</p>
-        <form:input path="middleName"/>
-        <p>Телефон:</p>
-        <form:input path="phone"/>
-        <p>E-mail:</p>
-        <form:input path="email"/>
-        <input name="step" type="hidden" value="1"/>
-        <input type="submit"  value="Продолжить"/>
+<div class="main-page">
+    <div class="reg-page-container">
+        <form:form method="POST" modelAttribute="newUser" action="/register">
+            <div>
+                <div class="logo-cont">
+                    <a href="/">
+                        <img class="reg-logo" src="<c:url value="/resources/images/bolsta.png" />"
+                             alt="Bolsta - спортивная социальная сеть">
+                    </a>
+                </div>
+                <form:input path="firstName" cssClass="log-reg-input reg-input" placeholder="Имя"/>
+
+                <form:input path="lastName" cssClass="log-reg-input reg-input" placeholder="Фамилия"/>
+
+                <form:input path="middleName" cssClass="log-reg-input reg-input" placeholder="Отчество"/>
+
+                <form:input path="phone" cssClass="log-reg-input reg-input" placeholder="Телефон"/>
+
+                <form:input path="email" cssClass="log-reg-input reg-input" placeholder="Почта"/>
+                <div class="log-reg-buttons reg-buttons">
+                    <input name="step" type="hidden" value="1"/>
+                    <button type="button" class="log-reg-button reg-button reg-back"> <</button>
+                    <button type="submit" class="log-reg-button reg-button reg-next">Продолжить</button>
+                </div>
+            </div>
+        </form:form>
+
     </div>
-</form:form>
+</div>
 </body>
 </html>
+

@@ -19,9 +19,24 @@
     <title>Rooms admin page</title>
 </head>
 <body>
-<table>
 
-</table>
-<p><a href="/">Назад</a></p>
+<c:forEach items="${regions}" var="region">
+    <h3>${region.name} - ${region.code}</h3>
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>Населенный пункт</td>
+            <td>Часовой пояс</td>
+        </tr>
+        <c:forEach items="${region.localities}" var="locality">
+            <tr>
+                <td>${locality.id}</td>
+                <td>${locality.name}</td>
+                <td>${locality.timezone}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</c:forEach>
+
 </body>
 </html>

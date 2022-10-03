@@ -1,6 +1,8 @@
 package com.bitrekz.bolsta.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,13 +15,11 @@ public class Locality {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="region_id", nullable=false)
     private Region region;
 
     private String timezone;
-
-    private String code;
-
 
     public Locality() {
     }
@@ -40,6 +40,7 @@ public class Locality {
         this.name = name;
     }
 
+    @JsonIgnoreProperties("localities")
     public Region getRegion() {
         return region;
     }
@@ -48,5 +49,12 @@ public class Locality {
         this.region = region;
     }
 
+    public String getTimezone() {
+        return timezone;
+    }
+
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
+    }
 
 }
