@@ -1,9 +1,16 @@
 package com.bitrekz.bolsta.entities;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "characteristics")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Characteristic {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,35 +20,5 @@ public class Characteristic {
     @Column(name = "value")
     private Double value;
 
-    public Characteristic() {
-    }
 
-    public Characteristic(String title, Double value) {
-        this.title = title;
-        this.value = value;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Double getValue() {
-        return value;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
-    }
 }

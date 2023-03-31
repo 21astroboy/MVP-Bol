@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.TimeZone;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,7 +20,7 @@ public class City {
     private String title;
     @Column(name = "region")
     private String region;
-    @Column(name  = "timezone")
+    @Column(name = "timezone")
     private TimeZone timeZone;
     @Column(name = "population")
     private int population;

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,16 +15,10 @@ public class GameRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "title")//левый защитник, центральный нападающий, левый полузащ.
+    @Column(name = "title")
     private String title;
-    @Column(name = "abbreviation") // ЛЗ, ЦН, ЛПЗ
+    @Column(name = "abbreviation")
     private String abbreviation;
-
-
-    public GameRole(String title, String abbreviation) {
-        this.title = title;
-        this.abbreviation = abbreviation;
-    }
 
 
 }
