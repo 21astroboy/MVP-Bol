@@ -13,13 +13,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Picture {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
     private String link;
-    @Column
     private String name;
-    @Column
     private String description;
 
 }

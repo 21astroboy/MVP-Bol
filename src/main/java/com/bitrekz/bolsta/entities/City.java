@@ -7,22 +7,19 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.TimeZone;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
 @Table(name = "cities")
 public class City {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "title")
     private String title;
-    @Column(name = "region")
-    private String region;
-    @Column(name = "timezone")
+    @ManyToOne
+    private Region region;
     private TimeZone timeZone;
-    @Column(name = "population")
     private int population;
 
 

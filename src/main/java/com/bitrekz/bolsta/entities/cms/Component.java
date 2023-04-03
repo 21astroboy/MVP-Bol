@@ -8,20 +8,20 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
-@Table(name = "component")
+@Table(name = "components")
 public class Component {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column()
+
     private String title;
-    @Column()
+
     private String description;
-    @Column()
+
     @OneToMany
     private List<Link> link;
 
