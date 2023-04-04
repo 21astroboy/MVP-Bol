@@ -23,7 +23,7 @@ public class Component {
     private String description;
 
     @OneToMany
-    private List<Link> link;
+    private List<Link> links;
 
 
 }
