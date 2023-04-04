@@ -1,0 +1,22 @@
+.login-form-container {
+    width: 100%;
+}
+
+.login-form {
+    display: flex;
+    margin: 0 auto;
+    width: 300px;
+    flex-direction: column;
+}
+
+.login-form input, button {
+    font-size: 1.2em;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.error {
+    font-size: 1.1em;
+    color: darkred;
+}
+
