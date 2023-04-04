@@ -19,7 +19,7 @@ public class Page {
     private String title;
     private String description;
     @OneToMany
-    private List<Component> component;
+    private List<Component> components;
 
 
 }
